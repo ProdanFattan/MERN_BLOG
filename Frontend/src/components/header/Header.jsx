@@ -46,13 +46,13 @@ const Header = () => {
             <FaMoon />
           </Button>
           <Link to="/Signin">
-            <Button gradientDuoTone="purpleToPink" pill>
+            <Button gradientDuoTone="purpleToPink" pill outline>
               Sign In
             </Button>
           </Link>
           <Navbar.Toggle />
         </div>
-      {/* here i used as ={'div'} because Navbar.Link and Link both gives <a> tag which is not allowed */}
+        {/* here i used as ={'div'} because Navbar.Link and Link both gives <a> tag which is not allowed */}
         <Navbar.Collapse>
           <Navbar.Link active={location === "/"} as={"div"}>
             <Link to="/">Home</Link>
