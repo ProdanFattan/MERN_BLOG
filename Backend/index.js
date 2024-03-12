@@ -21,7 +21,17 @@ app.listen(3001, () => {
   console.log("Server is running on" + "http://localhost:3001");
 });
 
-app.get("/", (req, res) => {
-  res.send("blog server is running");
-  // responseError(res,500);
+// app.get("/", (req, res) => {
+//   res.send("blog server is running");
+//   // responseError(res,500);
+// });
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
 });
