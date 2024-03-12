@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { SignupComponent } from "../components/index";
 const Signup = () => {
-
   return (
     <>
       <div className="min-h-screen my-20">
@@ -21,7 +20,7 @@ const Signup = () => {
           </div>
           {/*  right side */}
           <div className="flex-1 md:mt-0 mt-5">
-            
+            <SignupComponent />
           </div>
         </div>
       </div>
