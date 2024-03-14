@@ -11,11 +11,11 @@ const signin = async (req, res, next) => {
       try {
         let user = await User.findOne({ email }); // Checking the user in database
         if (!user) {
-          next(errorHandler(404, "Wrong Data 345"));
+          next(errorHandler(404, "Wrong Data"));
         } else {
           const isMatched = bcryptjs.compareSync(password, user.password);
           if (!isMatched) {
-            next(errorHandler(400, "Wrong Data 346"));
+            next(errorHandler(400, "Wrong Data"));
           } else {
             const token = jwt.sign(
               // Generate token and send it to client
@@ -23,7 +23,6 @@ const signin = async (req, res, next) => {
               process.env.JWT_SECRETKEY
               //   { expiresIn: "1h" }
             );
-            console.log(token);
             const { password: pass, ...rest } = user._doc;
             res
               .status(200)

@@ -20,6 +20,7 @@ const SignupComponent = () => {
       });
       const data = await res.json();
       if (data.success === false) {
+        setLoading(false);
         return setError(data.message);
       } else {
         navigate("/Signin");
