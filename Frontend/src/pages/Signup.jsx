@@ -4,7 +4,7 @@ import { SignupComponent } from "../components/index";
 const Signup = () => {
   return (
     <>
-      <div className="min-h-screen my-20">
+      <div className="min-h-min my-20">
         <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center">
           {/* left side */}
           <div className="flex-1">
