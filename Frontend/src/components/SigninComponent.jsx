@@ -3,16 +3,17 @@ import { Alert, Button, Spinner } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../components/index";
+import { signInFailure, signInStart, signInSuccess } from "../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SigninComponent = () => {
   const { register, handleSubmit } = useForm();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const createAccount = async (formData) => {
     try {
-      setError("");
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch("/api/v1/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -20,15 +21,13 @@ const SigninComponent = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setLoading(false);
-        return setError(data.message);
+        dispatch(signInFailure(data.message));
       } else {
+        dispatch(signInSuccess(data));
         navigate("/");
       }
-      setLoading(false);
     } catch (error) {
-      setError(error.message);
-      setLoading(false);
+      dispatch(signInFailure(data.message));
     }
   };
   return (
