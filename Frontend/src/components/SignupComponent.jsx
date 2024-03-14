@@ -22,7 +22,7 @@ const SignupComponent = () => {
       if (data.success === false) {
         return setError(data.message);
       } else {
-        navigate("/");
+        navigate("/Signin");
       }
       setLoading(false);
     } catch (error) {
