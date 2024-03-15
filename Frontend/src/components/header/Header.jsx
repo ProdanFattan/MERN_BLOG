@@ -1,9 +1,11 @@
 import React from "react";
-import { Button, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const { currentUser } = useSelector((state) => state.user);
   const location = useLocation().pathname;
   return (
     <>
@@ -54,11 +56,35 @@ const Header = () => {
           <Button className="h-10 w-12 hidden md:inline" color="gray" pill>
             <FaMoon />
           </Button>
-          <Link to="/Signin">
-            <Button gradientDuoTone="purpleToPink" pill outline>
-              Sign In
-            </Button>
-          </Link>
+          {currentUser ? (
+            <Dropdown
+              className=""
+              arrowIcon={false}
+              inline
+              label={
+                <Avatar alt="user" img={currentUser.profilePicture} rounded />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">@{currentUser?.username}</span>
+                <span className="block text-sm font-semibold truncate">
+                  {currentUser?.email}
+                </span>
+              </Dropdown.Header>
+              <Link to={"/dashboard?tab=profile"}>
+                <Dropdown.Item>Profile</Dropdown.Item>
+              </Link>
+              <Dropdown.Divider />
+              <Dropdown.Item>Sign Out</Dropdown.Item>
+            </Dropdown>
+          ) : (
+            <Link to="/Signin">
+              <Button gradientDuoTone="purpleToPink" pill outline>
+                Sign In
+              </Button>
+            </Link>
+          )}
+
           <Navbar.Toggle />
         </div>
         {/* here i used as ={'div'} because Navbar.Link and Link both gives <a> tag which is not allowed */}
