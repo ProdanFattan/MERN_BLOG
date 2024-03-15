@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, Button, Spinner } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { Input } from "../components/index";
+import { Input, GoogleOauth } from "../components/index";
 import { signInFailure, signInStart, signInSuccess } from "../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -77,6 +77,7 @@ const SignupComponent = () => {
               "Create Account"
             )}
           </Button>
+          <GoogleOauth />
         </div>
       </form>
       <div className="mt-5 flex gap-2 text-sm">
