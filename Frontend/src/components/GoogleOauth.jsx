@@ -45,7 +45,7 @@ const GoogleOauth = () => {
         className="w-full"
         onClick={handleGooleClick}
       >
-        <FaGoogle className="w-4 h-4 mr-2 text-black" />
+        <FaGoogle className="w-4 h-4 mr-2 text-black dark:text-white" />
         <span>Continue with Google</span>
       </Button>
     </>
