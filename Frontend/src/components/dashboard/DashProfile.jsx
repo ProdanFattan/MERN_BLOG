@@ -3,7 +3,7 @@ import React from 'react';
 const DashProfile = () => {
     return (
         <div>
-            
+            Profile
         </div>
     );
 };
