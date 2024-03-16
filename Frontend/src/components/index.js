@@ -5,6 +5,13 @@ import SignupComponent from "./SignupComponent";
 import SigninComponent from "./SigninComponent";
 import GoogleOauth from "./GoogleOauth";
 import ProtectedRoute from "./ProtectedRoute";
+import DashboardComp from "./dashboard/DashboardComp";
+import DashSideBar from "./dashboard/DashSideBar";
+import DashComments from "./dashboard/DashComments";
+import DashPosts from "./dashboard/DashPosts";
+import DashProfile from "./dashboard/DashProfile";
+import DashUsers from "./dashboard/DashUsers";
+
 export {
   Header,
   Footer,
@@ -13,4 +20,10 @@ export {
   SigninComponent,
   GoogleOauth,
   ProtectedRoute,
+  DashUsers,
+  DashProfile,
+  DashPosts,
+  DashComments,
+  DashSideBar,
+  DashboardComp,
 };
